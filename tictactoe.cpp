@@ -8,7 +8,6 @@ char current_marker;
 int current_player;
 string player1, player2;
 
-// Function to draw the Tic-Tac-Toe board
 void drawBoard() {
     cout << player1 << " (X)  -  " << player2 << " (O)" << endl;
     cout << endl;
@@ -23,7 +22,6 @@ void drawBoard() {
     cout << "     |     |     " << endl;
 }
 
-// Function to place a marker on the board
 bool placeMarker(int slot) {
     int row = (slot - 1) / 3;
     int col = (slot - 1) % 3;
@@ -36,19 +34,15 @@ bool placeMarker(int slot) {
     }
 }
 
-// Function to check if any player has won
 int checkWinner() {
-    // Rows
     for (int i = 0; i < 3; i++) {
         if (board[i][0] == board[i][1] && board[i][1] == board[i][2])
             return current_player;
     }
-    // Columns
     for (int i = 0; i < 3; i++) {
         if (board[0][i] == board[1][i] && board[1][i] == board[2][i])
             return current_player;
     }
-    // Diagonals
     if (board[0][0] == board[1][1] && board[1][1] == board[2][2])
         return current_player;
     if (board[0][2] == board[1][1] && board[1][1] == board[2][0])
@@ -57,7 +51,6 @@ int checkWinner() {
     return 0;
 }
 
-// Function to switch players after each turn
 void switchPlayer() {
     if (current_player == 1) {
         current_player = 2;
@@ -68,7 +61,6 @@ void switchPlayer() {
     }
 }
 
-// Function to get the current player's name
 string getCurrentPlayerName() {
     if (current_player == 1) {
         return player1;
